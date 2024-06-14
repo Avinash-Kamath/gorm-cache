@@ -70,7 +70,7 @@ func (c *Gorm2Cache) Init() error {
 		c.InstanceId = c.Config.MultiInstanceKey
 	}
 
-	if c.Config.CacheStorage == config.CacheStorageMemory {
+	if c.InstanceId == "" {
 		c.InstanceId = util.GenInstanceId()
 	}
 
