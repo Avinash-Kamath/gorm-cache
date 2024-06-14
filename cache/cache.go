@@ -67,8 +67,12 @@ func (c *Gorm2Cache) Init() error {
 			panic("please init redis config!")
 		}
 		c.Config.RedisConfig.InitClient()
+		c.InstanceId = c.Config.MultiInstanceKey
 	}
-	c.InstanceId = util.GenInstanceId()
+
+	if c.Config.CacheStorage == config.CacheStorageMemory {
+		c.InstanceId = util.GenInstanceId()
+	}
 
 	prefix := util.GormCachePrefix + ":" + c.InstanceId
 

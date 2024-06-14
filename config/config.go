@@ -33,6 +33,9 @@ type CacheConfig struct {
 
 	// DebugLogger
 	DebugLogger LoggerInterface
+
+	// MultiInstanceKey Use same cache instance for different instances if using redis
+	MultiInstanceKey string
 }
 
 type CacheLevel int
